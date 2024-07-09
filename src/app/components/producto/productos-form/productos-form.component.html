@@ -1,0 +1,84 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p>{{title}}</p>
+    </div>
+    <div class="col-6">
+      <h4>Nombre de categoria</h4>
+      <input #name="ngModel" type="text" class="form-control" id="name" name="name" 
+        placeholder="Nombre de producto"
+        [(ngModel)]="toUpdateGame.nombre" 
+        [ngClass]="{ 
+          'is-invalid': name.invalid && name.touched,
+          'is-valid': name.valid && name.touched
+        }" 
+        required 
+      />
+    </div>
+    <div class="col-6">
+      <h4>Descripcion de categoria</h4>
+      <input #description="ngModel" type="text" class="form-control" id="description" name="description" 
+        placeholder="Descripcion de producto"
+        [(ngModel)]="toUpdateGame.description" 
+        [ngClass]="{ 
+          'is-invalid': description.invalid && description.touched,
+          'is-valid': description.valid && description.touched
+        }" 
+        required 
+      />
+    </div>
+    <div class="col-6">
+      <h4>Precio de producto</h4>
+      <input #precio="ngModel" type="text" class="form-control" id="precio" name="precio" 
+        placeholder="Precio de producto"
+        [(ngModel)]="toUpdateGame.precio" 
+        [ngClass]="{ 
+          'is-invalid': precio.invalid && precio.touched,
+          'is-valid': precio.valid && precio.touched
+        }" 
+        required 
+      />
+    </div>
+    <div class="col-6">
+      <h4>Stock de producto</h4>
+      <input #cantStock="ngModel" type="text" class="form-control" id="Stock" name="Stock" 
+        placeholder="Stock de producto"
+        [(ngModel)]="toUpdateGame.cantStock" 
+        [ngClass]="{ 
+          'is-invalid': cantStock.invalid && cantStock.touched,
+          'is-valid': cantStock.valid && cantStock.touched
+        }" 
+        required 
+      />
+    </div>
+
+
+    <div class="col-6">
+      <h4>Categoría de producto</h4>
+      <select #categoria="ngModel" class="form-control" id="categoria" name="categoria"
+        [ngModel]="toUpdateGame.categoria?.id"
+        (ngModelChange)="onCategoryChange($event)"
+        [ngClass]="{ 
+          'is-invalid': categoria.invalid && categoria.touched,
+          'is-valid': categoria.valid && categoria.touched
+        }" 
+        required 
+      >
+        <option *ngFor="let cat of itemListCat" [value]="cat.id">{{ cat.id }}</option>
+      </select>
+    </div>
+
+
+    <div class="col-6 mt-3">
+      <button
+        type="button"
+        (click)="addEdit()"
+        class="btn btn-primary d-flex align-items-center">
+        <i class="fa-solid fa-pencil white me-2"></i>
+        <p class="mb-0"> {{title}} </p>
+      </button>
+    </div>
+  </div>
+</div>
+
